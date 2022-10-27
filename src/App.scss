@@ -1,0 +1,55 @@
+.App {
+  text-align: center;
+}
+.top-container {
+  display: flex;
+  padding: 0.3rem;
+  align-items: center;
+  justify-content: center;
+}
+.top-sub-container {
+  display: flex;
+  padding: 0.3rem;
+  justify-content: center;
+  color: #999;
+  .top-sub-container-icon {
+    margin-right:0.1rem;
+    margin-top: 1px;
+  }
+}
+.orgnization-container-title {
+  color:#333300;
+  font-size: 16px;
+  font-weight: bold;
+}
+.orgnization-container {
+  display: flex;
+  .orgnization-container-icon {
+    margin-right:0.1rem;
+  }
+  .orgnization-bottom-container-title {
+    color:#999;
+    margin-bottom: 0.2rem;
+  }
+  .orgnization-bottom-container-value {
+    font-size: 18px;
+    color:#333300;
+    font-weight: 700;
+  }
+}
+.top-text {
+  font-size: 0.1rem;
+  white-space: nowrap;
+}
+.select-style {
+  margin: 0 0.1rem;
+  background-color: #F6F7FB;
+}
+.demo-cell {
+  padding: 5px;
+}
+.icon-people-transparent {
+  background-image: linear-gradient(135deg, #438AFF 0%, #49DAFF 100%);
+    -webkit-background-clip: text;
+    color: transparent;
+}

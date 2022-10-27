@@ -1,9 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "@arco-design/mobile-react/dist/style.css";
+import './asset/iconfont/iconfont.css';
+import "./index.css";
+import App from "./App";
+import setRootPixel from "@arco-design/mobile-react/tools/flexible";
+
+setRootPixel();
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>

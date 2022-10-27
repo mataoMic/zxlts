@@ -1,0 +1,16 @@
+.subTablePie-container {
+  display: flex;
+  margin: 0.4rem 0.3rem;
+  .subTablePie-title-icon {
+    width: 3px;
+    height: 18px;
+    background: #438AFF;
+    margin: 3px 0.5rem 0 0;
+  }
+  .subTablePie-title {
+    color: #333333;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 0.3rem;
+  }
+}

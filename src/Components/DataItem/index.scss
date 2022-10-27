@@ -1,0 +1,40 @@
+.ui-data-item {
+  .ui-data-item-topbox {
+    color: #333;
+    display: flex;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-size: 14px;
+    font-weight: 400;
+    justify-content: space-between;
+    padding: 8px 10px;
+    div {
+      word-break: break-all;
+
+      &:nth-child(2) {
+        text-align: right;
+      }
+    }
+
+    .ui-data-item-hasContent-value {
+      color: #999;
+      font-size: 12px;
+      margin-right: 10px;
+    }
+
+    .ui-data-item-topbox-labebox {
+      display: flex;
+    }
+
+    .dcimColor {
+      color: #666;
+    }
+  }
+
+  .ui-selectable-children-box {
+    padding-left: 15px;
+  }
+
+  .ui-children-box {
+    margin: 5px 13px;
+  }
+}

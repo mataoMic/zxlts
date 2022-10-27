@@ -1,0 +1,62 @@
+.ui-card {
+  border-radius: 8px;
+  margin: 10px 15px;
+  padding: 0 8px;
+  background-color: #fff;
+  overflow: hidden;
+  font-size: 15px;
+
+  .ui-card-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+
+    .icon {
+      margin-right: 8px;
+    }
+  }
+}
+.ui-card-full {
+  margin: 0;
+  border-radius: 0;
+}
+.ui-card-mms {
+  &:last-child {
+    padding-bottom: 14px;
+  }
+
+  .icon-halfFilled-circle-blue {
+    font-size: 9px;
+  }
+
+  margin: 0;
+
+  .ui-card-title {
+    padding: 15px 0 10px 7px;
+  }
+
+  .date {
+    font-size: 14px;
+  }
+
+  .ui-card-content {
+    display: flex;
+    padding-left: 12px;
+
+    .ui-sub-table {
+      background: #eff8ff;
+      border-radius: 8px;
+      padding: 14px 0 14px 15px;
+      font-size: 14px;
+
+      .ui-sub-table-label {
+        width: 98px;
+
+        & + td {
+          color: #666;
+        }
+      }
+    }
+  }
+}

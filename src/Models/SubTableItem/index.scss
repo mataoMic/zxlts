@@ -1,0 +1,34 @@
+.active-tabs-container {
+  display: flex;
+  .active-tabs-item {
+    font-size: 0.3rem;
+    color: #438AFF;
+    background: #C9E2FF;
+    border-radius: 4px;
+    padding: 6px 6px;
+    margin: 0.2rem 0.2rem 0.2rem 0;
+  }
+}
+.subTable-progress-value {
+  white-space: nowrap;
+}
+.subTable-progress-container {
+  text-align: right;
+  display: flex;
+  .number {
+    margin-right: 0.16rem;
+    white-space: nowrap;
+  }
+}
+.subTable-label {
+  font-size: 0.35rem;
+}
+.subTable-subLabel {
+  color:#438AFF;
+  background: #C9E2FF;
+  border-radius: 4px;
+  padding: 1px 5px;
+  margin-left: 0.2rem;
+  font-size: 0.1rem;
+  font-weight: 400;
+}

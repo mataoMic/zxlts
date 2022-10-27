@@ -1,0 +1,44 @@
+{
+  "id": "3725899",
+  "name": "SSG-Dashboard",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "SSG-Dashboard",
+  "glyphs": [
+    {
+      "icon_id": "32474061",
+      "name": "形状",
+      "font_class": "people",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "32472039",
+      "name": "路径",
+      "font_class": "lujing",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "2674927",
+      "name": "箭头 上",
+      "font_class": "arrowup",
+      "unicode": "e62d",
+      "unicode_decimal": 58925
+    },
+    {
+      "icon_id": "2674929",
+      "name": "箭头 下",
+      "font_class": "arrowdown",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "32471669",
+      "name": "提示",
+      "font_class": "tips",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    }
+  ]
+}
