@@ -1,15 +1,21 @@
 import Card from "../../Components/Card";
 import ECharts from "../ECharts";
+import { OrgnizationText } from "./OrgnizationText";
 import './index.scss';
-const Orgnization = ({option}:any) => {
+const Orgnization = ({option, data, orgnizationTextList}:any) => {
+  // console.log(option,data)
   return (
     <Card>
+      <div className="container-title orgnization-container-title">Your Orgnization</div>
       <div className="orgnization-container-pie" style={{width:'100%'}}>
         <ECharts option={option}/>
-        <div>123</div>
+        <div className="orgnization-container-pie-text">
+          <div>
+            <OrgnizationText data={data}/>
+          </div>
+        </div>
       </div>
-      <div className="orgnization-container-title">Your Orgnization</div>
-      <Card style={{ background: "#F6F7FB" }}>
+      <Card style={{ background: "#F6F7FB",padding:"10px", margin:"10px" }}>
         <div className="orgnization-container">
           <div className="orgnization-container-icon">
             <i className="iconfont icon-people icon-people-transparent" />
@@ -18,7 +24,7 @@ const Orgnization = ({option}:any) => {
             <div className="orgnization-bottom-container-title">
               Monthly Active Uer
             </div>
-            <div className="orgnization-bottom-container-value">123/232</div>
+            <div className="orgnization-bottom-container-value">{`${orgnizationTextList.activeUserSum}/${orgnizationTextList.totalUserSum}`}</div>
           </div>
         </div>
       </Card>

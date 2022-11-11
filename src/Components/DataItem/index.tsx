@@ -11,14 +11,14 @@ function DataItem({
   expand = true,
   dcimColor = false,
   date,
-  style,
+  style = {},
   noCrevice = false
 }:any) {
   const hasContent = !!children && expand;
   const [expanded, setExpanded] = useState(false);
   return (
     <div className="ui-data-item" style={style}>
-      <div className="ui-data-item-topbox" style={noCrevice && {padding:'8px 0'}}>
+      <div className="ui-data-item-topbox" >
         <div
           className={
             (selectable

@@ -1,0 +1,19 @@
+@import '../../asset//style/index.scss';
+.ui-alert-box {
+  padding: 10px 0;
+  height: 140px;
+  width: 260px;
+  .ui-alert-text,
+  .ui-alert-button-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .ui-alert-text {
+    height: 75%;
+  }
+  .ui-alert-button-bottom {
+    color: $global-color-ordinary;
+    height: 25%;
+  }
+}

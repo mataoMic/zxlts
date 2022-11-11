@@ -1,0 +1,23 @@
+.orgnizationText-container {
+  display: flex;
+
+  .orgnizationText-title-icon {
+    line-height: 10px;
+    width: 0.2rem;
+    height: 0.2rem;
+    margin: 0.1rem 0.2rem;
+    border-radius: 2px;
+  }
+  .orgnizationText-value-title {
+    white-space: nowrap;
+  }
+ .orgnizationText-value-number-percentage {
+  .orgnizationText-value-number-percentage-number {
+    min-width: 0.4rem;
+  }
+  .orgnizationText-value-number-percentage-line {
+    margin: 0 0.2rem;
+  }
+  display: flex;
+ } 
+}

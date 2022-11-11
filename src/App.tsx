@@ -1,68 +1,179 @@
 import Card from "./Components/Card";
 import DataItem from "./Components/DataItem";
-import { useState, useMemo } from "react";
-import { Cell, DropdownMenu, Button } from "@arco-design/mobile-react";
+import { useState, useMemo, useEffect } from "react";
+import { json, useParams } from "react-router-dom";
+import {
+  Cell,
+  DropdownMenu,
+  Button,
+  DatePicker,
+} from "@arco-design/mobile-react";
 import "./App.scss";
 import "./restructure.scss";
-import {
-  subList,
-  options,
-  subTablePieList,
-  activelabels,
-  coChatlabels,
-  subListCoChat,
-  subListNoCoChat
-} from "./api";
-import { functionOptionFn,orgnizationOptionFn } from "./api/pieOptions";
+import { options, dashboardData } from "./api";
+import { functionOptionFn, orgnizationOptionFn } from "./api/pieOptions";
 import Tabs from "./Models/Tabs";
 import SubTableItem from "./Models/SubTableItem";
 import SubTablePie from "./Models/subTablePie";
 import Orgnization from "./Models/Orgnization";
-export default function ButtonDemo() {
-  const [isCochat, setTsCochat] = useState(true);
-  const [functionOption, setFunctionOption] = useState(functionOptionFn);
-  const [orgnizationOption, setOrgnizationOption] = useState(orgnizationOptionFn);
+import useGetData from "./hooks/useRequest";
+import {
+  LoadingModal,
+  loading as startLoading,
+  alert,
+} from "./Components/Modal";
+export default function Dashboard() {
+  const [rand] = useState(Math.random());
+  const [selectItem, setSelectItem] = useState(
+    new Date().getFullYear() +
+      "-" +
+      (new Date().getMonth() < 10
+        ? "0" + (new Date().getMonth())
+        : new Date().getMonth())
+  );
+  const [pickerVisible, setPickerVisible] = useState(false);
+  const [selectStartTime, setSelectStartTime] = useState(true);
+  const [startTime, setStartTime]:any = useState(
+    new Date().getTime()
+  );
+  const [endTime, setEndTime]:any = useState(
+    new Date().getTime()
+  );
+  // const [orgnizationOption, setOrgnizationOption] =
+  //   useState(orgnizationOptionFn);
+  console.log(selectItem, rand);
+  const [data, loading, error, code]: any = useGetData(
+    dashboardData,
+    selectItem,
+    [selectItem]
+  );
+  if (error) {
+    // console.log(error)
+    alert("数据错误！");
+  }
   return (
     <>
       <Card full={true}>
         <div className="top-container">
-          <span className="top-text">Quick Select</span>
+          <div className="top-text">Quick Select</div>
           <div className="select-style">
-            <DropdownMenu options={options} />
+            <DropdownMenu
+              defaultValues={[1]}
+              options={options()}
+              onOptionClick={(value, item) => {
+                console.info("click");
+              }}
+              onOptionChange={(value: any, item: any) => {
+                setSelectItem(item.label);
+                console.info(value, item);
+              }}
+            />
           </div>
-          <Button inline size="small" style={{ marginRight: 40 }}>
+        </div>
+        <div className="top-container">
+          <div className="top-text">Month Select</div>
+          <div className="top-button-container">
+          <Button inline size="small" className="top-date-button" onClick={()=>{
+            setSelectStartTime(true)
+            setPickerVisible(true)
+            // console.log('刷新')
+          }}>
+            { new Date(startTime).getFullYear() + '-' +  (new Date(startTime).getMonth()+1)}
+            <i className="iconfont icon-date" style={{marginLeft:'0.5rem'}} />
+          </Button>
+          <div>~</div>
+          <Button inline size="small" className="top-date-button" onClick={()=>{
+            setSelectStartTime(false)
+            setPickerVisible(true)
+            // console.log('刷新')
+          }}>
+            {  new Date(endTime).getFullYear() + '-' +  (new Date(endTime).getMonth()+1)}
+            <i className="iconfont icon-date" style={{marginLeft:'0.5rem'}} />
+          </Button>
+          <Button inline size="small" className="top-reflash-button" onClick={()=>{
+          console.log(`${startTime},${endTime}`)
+          setSelectItem(`${startTime},${endTime}`)
+          }}>
             Refresh
           </Button>
-        </div>
-      </Card>
-      <Card full={true}>
-        <div className="top-sub-container">
-          <div className="top-sub-container-icon">
-            <i className="iconfont icon-tips" />
-          </div>
-          <div>
-            You could view the usage data by select month,quaterly and fiscal
-            year.
           </div>
         </div>
       </Card>
-      <Orgnization option={orgnizationOption}/>
-      <Card>
-        <Tabs
-          tabData={{
-            labels: isCochat ? activelabels : coChatlabels,
-            values: isCochat
-              ? [
-                  <SubTableItem data={subList} />,
-                  <SubTablePie data={subTablePieList} option={functionOption} />,
-                ]
-              : [
-                <SubTableItem data={subListCoChat} />,
-                <SubTableItem data={subListNoCoChat} />,
-              ],
-          }}
-        />
-      </Card>
+      {loading ? (
+        <LoadingModal shown={true} text={"加载中"} />
+      ) : !data.toast ? (
+        <>
+          <Card full={true}>
+            <div className="top-sub-container">
+              <div className="top-sub-container-icon">
+                <i className="iconfont icon-tips" />
+              </div>
+              <div>
+                You could view the usage data by select month,quaterly and
+                fiscal year.
+              </div>
+            </div>
+          </Card>
+          <Orgnization
+            option={data.orgnizationOption}
+            data={data.orgnizationText}
+            orgnizationTextList={data.orgnizationTextList}
+          />
+          <Card style={{ padding: 0 }}>
+            <SubTableItem data={data.subordinateDashboard} />
+          </Card>
+          {/* <Card>
+          <Tabs
+            tabData={{
+              labels: isCochat ? activelabels : coChatlabels,
+              values: isCochat
+                ? [
+                    <SubTableItem data={subList} />,
+                    <SubTablePie
+                      data={subTablePieList}
+                      option={functionOption}
+                    />,
+                  ]
+                : [
+                    <SubTableItem data={subListCoChat} />,
+                    <SubTableItem data={subListNoCoChat} />,
+                  ],
+            }}
+          />
+        </Card> */}
+        </>
+      ):<div>无数据</div>}
+      <DatePicker
+        visible={pickerVisible}
+        maskClosable
+        disabled={false}
+        currentTs={selectStartTime?startTime:endTime}
+        typeArr={['year','month']}
+        // mode="date"
+        // minTs={startTime}
+        onHide={() => {
+          setPickerVisible(false);
+        }}
+        onChange={(timestamp, obj) => {
+          console.info("---demo on change",timestamp, obj);
+          if (selectStartTime) {
+            setStartTime(timestamp);
+          }else {
+            setEndTime(timestamp);
+          }
+        }}
+        onOk={(timestamp, obj) => {
+          console.info("----- time onok demo date", obj, timestamp);
+          console.log(selectStartTime)
+        }}
+        formatter={(value, type): any => {
+          if (type === "year") {
+            return `${value}年`;
+          } else if (type === "month") {
+            return `${value}月`;
+          }
+        }}
+      />
     </>
   );
 }

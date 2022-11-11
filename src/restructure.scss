@@ -1,4 +1,14 @@
 .arco-dropdown-menu .arco-select-item {
-  padding: 0 0.3rem;
+  padding: 0 0.16rem;
   line-height: 0.55rem;
 }
+.arco-dropdown-menu .arco-select-item-label {
+  width: 100%;
+  justify-content: space-between;
+}
+.arco-dropdown-menu .arco-select-item-label-text {
+  max-width:none;
+}
+// .top-button-container .btn-text {
+//   font-size: 0.32rem !important;
+// }

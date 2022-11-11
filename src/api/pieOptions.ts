@@ -1,11 +1,30 @@
 import * as echarts from "echarts/core";
-export const orgnizationOptionFn = function(){
+export const orgnizationOptionFn = (dashboardData:any)=>{
+  // console.log(dashboardData)
+  let colorList:any  = {
+    'Contractor':[
+      {offset: 0, color: '#FC807B'}, 
+      {offset: 1, color: '#FC9F7E'},
+  ],
+    'Regular Employee':[
+      {offset: 0, color: '#438AFF'}, 
+      {offset: 1, color: '#49D7FE'},
+  ],
+    "Vendor":                      [
+      {offset: 0, color: '#89D121'}, 
+      {offset: 1, color: '#BDF56A'},
+  ]
+  }
+  let sum = 0
+  dashboardData.forEach((e:any) => {
+    sum += e.activeUser
+  })
   return {
     title: {
     text: 'Total', // join('\n')作用是换行居中
-    subtext: "36866",
+    subtext: sum,
     itemGap: 10,
-    x: '49%',
+    x: '46%',
     y: '35%',
     textAlign: 'center',
     // 可以设置显示的样式
@@ -32,73 +51,26 @@ label: {
   show: false,
   position: 'center'
 },
-data: [
-  { value: 1048, name: 'Search Engine',
-        itemStyle: {
-              normal: {//颜色渐变
-                  color: new echarts.graphic.LinearGradient(
+data: 
+  dashboardData.map((item:any)=>{
+    return   { value: item.activeUser, name: item.employeeType,
+    itemStyle: {
+          normal: {//颜色渐变
+              color: new echarts.graphic.LinearGradient(
 
-                      1, 1, 1, 0,  //(上-下 渐变)
-                      // 1, 1, 0, 0,  //(左上-右下 渐变)
-                      // 1, 0, 0, 0,  //(左-右 渐变)
-                      // 0, 1, 1, 0,  //(右上-左下 渐变)
-                      // 0, 1, 1, 1,  //(左-右 渐变)
-                      // 1, 0, 1, 1,  //(上-下 渐变)
-                      // 0, 0, 1, 0,  //(左-右 渐变)
-                      // 0, 0, 0, 1,  //(上-下 渐变)
-
-                      [
-                          {offset: 0, color: '#FC807B'}, 
-                          {offset: 1, color: '#FC9F7E'},
-                      ]
-                  )
-              }
-          } },
-  { value: 735, name: 'Direct',
-        itemStyle: {
-              normal: {//颜色渐变
-                  color: new echarts.graphic.LinearGradient(
-
-                      1, 1, 1, 0,  //(上-下 渐变)
-                      // 1, 1, 0, 0,  //(左上-右下 渐变)
-                      // 1, 0, 0, 0,  //(左-右 渐变)
-                      // 0, 1, 1, 0,  //(右上-左下 渐变)
-                      // 0, 1, 1, 1,  //(左-右 渐变)
-                      // 1, 0, 1, 1,  //(上-下 渐变)
-                      // 0, 0, 1, 0,  //(左-右 渐变)
-                      // 0, 0, 0, 1,  //(上-下 渐变)
-
-                      [
-                          {offset: 0, color: '#438AFF'}, 
-                          {offset: 1, color: '#49D7FE'},
-                      ]
-                  )
-              }
+                  1, 1, 1, 0,  //(上-下 渐变)
+                  // 1, 1, 0, 0,  //(左上-右下 渐变)
+                  // 1, 0, 0, 0,  //(左-右 渐变)
+                  // 0, 1, 1, 0,  //(右上-左下 渐变)
+                  // 0, 1, 1, 1,  //(左-右 渐变)
+                  // 1, 0, 1, 1,  //(上-下 渐变)
+                  // 0, 0, 1, 0,  //(左-右 渐变)
+                  // 0, 0, 0, 1,  //(上-下 渐变)
+                colorList[item.employeeType]
+              )
           }
-  },
-  { value: 580, name: 'Email',
-      itemStyle: {
-              normal: {//颜色渐变
-                  color: new echarts.graphic.LinearGradient(
-
-                      1, 1, 1, 0,  //(上-下 渐变)
-                      // 1, 1, 0, 0,  //(左上-右下 渐变)
-                      // 1, 0, 0, 0,  //(左-右 渐变)
-                      // 0, 1, 1, 0,  //(右上-左下 渐变)
-                      // 0, 1, 1, 1,  //(左-右 渐变)
-                      // 1, 0, 1, 1,  //(上-下 渐变)
-                      // 0, 0, 1, 0,  //(左-右 渐变)
-                      // 0, 0, 0, 1,  //(上-下 渐变)
-
-                      [
-                          {offset: 0, color: '#89D121'}, 
-                          {offset: 1, color: '#BDF56A'},
-                      ]
-                  )
-              }
-          }
-  }
-]
+      } }
+  })
 },
   {
   name: '外边框',
@@ -125,7 +97,7 @@ data: [
 }
 ]
 };
-}();
+};
 export const functionOptionFn = function() {
   return {
     legend: [

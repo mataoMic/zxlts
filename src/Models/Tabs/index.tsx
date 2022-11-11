@@ -9,7 +9,7 @@ export default function TabsDemo({ tabData }:any) {
             defaultActiveTab={0}
             tabBarHasDivider={false}
             onAfterChange={(tab, index) => {
-                console.log('[tabs]', tab, index);
+                // console.log('[tabs]', tab, index);
             }}
             translateZ={false}
         >

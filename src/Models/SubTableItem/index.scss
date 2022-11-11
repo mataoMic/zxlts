@@ -1,12 +1,16 @@
+.bottom-container-title {
+  border-bottom: 1px solid #ddd;
+  padding:10px;
+}
 .active-tabs-container {
   display: flex;
+  justify-content: space-between;
   .active-tabs-item {
     font-size: 0.3rem;
     color: #438AFF;
-    background: #C9E2FF;
     border-radius: 4px;
-    padding: 6px 6px;
-    margin: 0.2rem 0.2rem 0.2rem 0;
+    padding: 8px 10px;
+    font-weight: bold;
   }
 }
 .subTable-progress-value {

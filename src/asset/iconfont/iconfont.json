@@ -6,6 +6,13 @@
   "description": "SSG-Dashboard",
   "glyphs": [
     {
+      "icon_id": "32802236",
+      "name": "date",
+      "font_class": "date",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
       "icon_id": "32474061",
       "name": "形状",
       "font_class": "people",

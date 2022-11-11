@@ -1,0 +1,36 @@
+@import '../../asset//style/index.scss';
+
+.ui-modal-alert {
+  // padding: 10px 0;
+  padding-top: 10px;
+  height: 140px;
+  width: 260px;
+
+  .ui-modal-alert__text,
+  .ui-modal-alert__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ui-modal-alert__text {
+    text-align: center;
+    height: 70%;
+  }
+
+  .ui-modal-alert__button {
+    color: $global-color-ordinary;
+    height: 30%;
+  }
+
+  .ui-modal-button-box {
+    display: flex;
+    align-items: center;
+    height: 25%;
+    justify-content: center;
+
+    .ui-modal-alert__button {
+      width: 50%;
+    }
+  }
+}

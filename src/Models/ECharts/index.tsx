@@ -21,7 +21,7 @@ const ECharts = ({option}: any) => {
     );
     // 4. 调用表格数据
     chart.setOption(option);
-    console.log(option)
+    // console.log(option)
     window.onresize = function() {
       chart.resize();
     };

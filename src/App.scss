@@ -2,14 +2,27 @@
   text-align: center;
 }
 .top-container {
-  display: flex;
-  padding: 0.3rem;
+  padding: 0.1rem;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  .top-button-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  .top-text {
+    margin:0.15rem 0;
+  }
+  .top-date-button {
+    background: #F6F7FB;
+    color:#1d2129;
+  }
+  .top-reflash-button {
+    background: #438AFF;
+  }
 }
 .top-sub-container {
   display: flex;
-  padding: 0.3rem;
+  padding: 0.3rem 0;
   justify-content: center;
   color: #999;
   .top-sub-container-icon {
@@ -17,7 +30,7 @@
     margin-top: 1px;
   }
 }
-.orgnization-container-title {
+.container-title {
   color:#333300;
   font-size: 16px;
   font-weight: bold;
@@ -36,13 +49,16 @@
     color:#333300;
     font-weight: 700;
   }
+
+  .arco-select-item-label {
+
+  }
 }
 .top-text {
   font-size: 0.1rem;
   white-space: nowrap;
 }
 .select-style {
-  margin: 0 0.1rem;
   background-color: #F6F7FB;
 }
 .demo-cell {

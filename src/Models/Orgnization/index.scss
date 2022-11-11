@@ -1,6 +1,14 @@
+.orgnization-container-title {
+  margin: 10px 0;
+}
 .orgnization-container-pie {
   display: flex;
-  div{
-    flex: 1;
+  .orgnization-container-pie-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+}
+.orgnization-container-pie> div{
+  flex: 1;
 }
