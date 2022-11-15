@@ -1,4 +1,5 @@
 import Card from "./Components/Card";
+import * as _ from 'lodash-es';
 import DataItem from "./Components/DataItem";
 import { useState, useMemo, useEffect } from "react";
 import { json, useParams } from "react-router-dom";
@@ -22,14 +23,16 @@ import {
   loading as startLoading,
   alert,
 } from "./Components/Modal";
+import Empty from "./Models/Empty";
+import { Toast } from "@arco-design/mobile-react";
 export default function Dashboard() {
   const [rand] = useState(Math.random());
   const [selectItem, setSelectItem] = useState(
     new Date().getFullYear() +
       "-" +
       (new Date().getMonth() < 10
-        ? "0" + (new Date().getMonth())
-        : new Date().getMonth())
+        ? "0" + (new Date().getMonth() + 1)
+        : new Date().getMonth() + 1)
   );
   const [pickerVisible, setPickerVisible] = useState(false);
   const [selectStartTime, setSelectStartTime] = useState(true);
@@ -51,6 +54,12 @@ export default function Dashboard() {
     // console.log(error)
     alert("数据错误！");
   }
+  useEffect(()=>{
+    _.get(data,'toast') && toast('toast', {
+      content: data.toast,
+      duration: 2000
+  })
+  },[data])
   return (
     <>
       <Card full={true}>
@@ -58,7 +67,6 @@ export default function Dashboard() {
           <div className="top-text">Quick Select</div>
           <div className="select-style">
             <DropdownMenu
-              defaultValues={[1]}
               options={options()}
               onOptionClick={(value, item) => {
                 console.info("click");
@@ -100,7 +108,7 @@ export default function Dashboard() {
         </div>
       </Card>
       {loading ? (
-        <LoadingModal shown={true} text={"加载中"} />
+        <LoadingModal shown={true} text={"loading"} />
       ) : !data.toast ? (
         <>
           <Card full={true}>
@@ -142,7 +150,7 @@ export default function Dashboard() {
           />
         </Card> */}
         </>
-      ):<div>无数据</div>}
+      ):<Empty />}
       <DatePicker
         visible={pickerVisible}
         maskClosable
@@ -176,4 +184,10 @@ export default function Dashboard() {
       />
     </>
   );
+}
+function toast(func:any, options:any) {
+  if (!!(window as any).toastInstance) {
+    (window as any).toastInstance.close();
+  }
+  (window as any).toastInstance = (Toast as any)[func](options);
 }

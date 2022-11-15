@@ -45,7 +45,7 @@ export function getLanguage() {
 export const catchErrFromArray = resList => {
   resList.map(item => {
     if (!_.get(item, 'data') || item.code !== 0) {
-      debugger
+      
       throw new Error(JSON.stringify({
         code: item.code
       }));

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import aes from '../utils/aes';
-import Toast from '../Components/Toast';
+import { Toast } from '@arco-design/mobile-react';
 import { getCookie } from '../utils/common';
 import { alert } from '../Components/Modal';
 import Bridge from '../utils/Bridge';
@@ -55,11 +55,11 @@ instance.interceptors.response.use(
 
   (error) => {
     // console.log(error);
-    if (error.toString().indexOf('timeout') > -1) {
-      Toast.error(<span style={{fontSize: '0.5rem'}}>网络超时</span>, 2000);
-    } else {
-      Toast.error(<span style={{fontSize: '0.5rem'}}>请求错误</span>, 2000);
-    }
+    // if (error.toString().indexOf('timeout') > -1) {
+    //   Toast.error(<span style={{fontSize: '0.5rem'}}>网络超时</span>, 2000);
+    // } else {
+    //   Toast.error(<span style={{fontSize: '0.5rem'}}>请求错误</span>, 2000);
+    // }
     if (error.response.status) {
       switch (error.response.status) {
         // 401: 未登录

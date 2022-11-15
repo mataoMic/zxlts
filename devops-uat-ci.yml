@@ -1,0 +1,25 @@
+package: webtest.cochat.lenovo.com.zip
+---
+profiles:
+  - dev
+  - tst
+  - pre
+  - prod
+---
+## Defaults
+variables:
+  BUILD_PATH: webtest.cochat.lenovo.com/apps/ssgltdashboard
+  REACT_APP_SERVER_URL: https://uat.cochat.lenovo.com/cochat-ssg-lt-dashboard
+stages:
+  prepare:
+    - rm -rf ./webtest.cochat.lenovo.com/*
+    - npm cache clean --force
+    - npm config set registry http://maven.xpaas.lenovo.com/nexus/repository/npm/
+    - npm install --ignore-scripts
+  build:
+    - npm run build
+
+  zip:
+    - zip -q -r webtest.cochat.lenovo.com.zip webtest.cochat.lenovo.com
+  clean-node-modules:
+    - rm -rf ./node_modules/*

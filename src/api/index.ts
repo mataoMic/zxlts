@@ -146,7 +146,7 @@ export const dashboardData = async (params: any) => {
   console.log(params);
   let paramsArr = params.split(',')
   console.log(paramsArr)
-  debugger
+  
   if (paramsArr.length > 1 ){
     let start = new Date(parseInt(paramsArr[0])).getFullYear() + '-' +  (new Date(parseInt(paramsArr[0])).getMonth()+1)
     let end = new Date(parseInt(paramsArr[1])).getFullYear() + '-' +  (new Date(parseInt(paramsArr[1])).getMonth()+1)
@@ -154,11 +154,11 @@ export const dashboardData = async (params: any) => {
   }
   console.log(paramsArr)
   const managerDashboard: any = await post(
-    "/api/ssg-lt/v1/getManagerDashboard",
+    "api/ssg-lt/v1/getManagerDashboard",
     paramsArr
   );
   const subordinateDashboard: any = await post(
-    "/api/ssg-lt/v1/getSubordinateDashboard",
+    "api/ssg-lt/v1/getSubordinateDashboard",
     paramsArr
   );
   catchErrFromArray([managerDashboard, subordinateDashboard]);
@@ -183,8 +183,7 @@ export const dashboardData = async (params: any) => {
     };
   });
   if (subordinateDashboard.data.length === 0 || managerDashboard.data.length === 0) {
-    debugger
-     return {toast:'无数据'}
+     return {toast:'No Data'}
   }
   let activeUserSum = 0;
   let totalUserSum = 0;

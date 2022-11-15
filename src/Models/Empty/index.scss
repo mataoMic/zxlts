@@ -1,0 +1,18 @@
+.empty-container {
+  padding:1rem;
+  p {
+    text-align: center;
+    margin: 0.3rem 0;
+  }
+  img {
+    width: 100%;
+  }
+  .empty-text-label {
+    font-weight: bold;
+    font-size: 0.4rem;
+  }
+  .empty-text-sub-label {
+    color:#909399;
+    font-size: 0.3rem;
+  }
+}

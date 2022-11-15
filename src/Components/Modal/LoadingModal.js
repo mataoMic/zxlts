@@ -18,7 +18,7 @@ function LoadingModal(props) {
   );
 }
 
-export function loading(text = '数据加载中', solidBackdrop = false) {
+export function loading(text = 'loading', solidBackdrop = false) {
   const root = ReactDOM.createRoot(document.createDocumentFragment());
 
   root.render(
